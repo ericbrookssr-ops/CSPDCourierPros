@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSPD Courier Pros | Same-Day Courier & Scheduled Routes</title>
+  <meta name="description" content="Fast, reliable local courier service with same-day delivery, scheduled routes, proof of delivery, and a built-in delivery price estimator." />
+  <meta name="theme-color" content="#0B1220" />
+
+  <style>
+    :root{
+      --bg:#0B1220;
+      --panel:#0F1A2E;
+      --card:#111C33;
+      --text:#EAF0FF;
+      --muted:#B7C2E0;
+      --line:rgba(255,255,255,.10);
+      --accent:#FF3B3B;
+      --accent2:#35D0BA;
+      --shadow:0 16px 50px rgba(0,0,0,.35);
+      --radius:18px;
+      --max:1120px;
+      --font:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+
+      --nav-bg:rgba(11,18,32,.65);
+      --pill-bg:rgba(255,255,255,.05);
+      --hero-bg:rgba(15,26,46,.55);
+      --hero-bullet-bg:rgba(255,255,255,.04);
+      --input-bg:rgba(255,255,255,.06);
+      --btn-bg:rgba(255,255,255,.06);
+      --btn-hover:rgba(255,255,255,.10);
+      --footer-bg:transparent;
+    }
+
+    html[data-theme="light"]{
+      --bg:#F7F8FB;
+      --panel:#FFFFFF;
+      --card:#FFFFFF;
+      --text:#0B1220;
+      --muted:#4B5563;
+      --line:rgba(11,18,32,.12);
+      --accent:#FF3B3B;
+      --accent2:#0EA5A4;
+      --shadow:0 16px 50px rgba(11,18,32,.10);
+
+      --nav-bg:rgba(247,248,251,.85);
+      --pill-bg:rgba(255,255,255,.85);
+      --hero-bg:rgba(255,255,255,.92);
+      --hero-bullet-bg:rgba(11,18,32,.03);
+      --input-bg:rgba(255,255,255,.98);
+      --btn-bg:rgba(255,255,255,.90);
+      --btn-hover:rgba(255,255,255,1);
+      --footer-bg:rgba(255,255,255,.65);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      line-height:1.45;
+      background:
+        radial-gradient(900px 500px at 10% 10%, color-mix(in oklab, var(--accent2) 12%, transparent), transparent 55%),
+        radial-gradient(700px 450px at 85% 20%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 55%),
+        radial-gradient(900px 700px at 50% 110%, color-mix(in oklab, var(--text) 6%, transparent), transparent 55%),
+        var(--bg);
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 22px}
+    code{background: color-mix(in oklab, var(--text) 10%, transparent); padding:2px 6px; border-radius:8px}
+
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: var(--nav-bg);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0; 
+	  gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; text-decoration:none;
+    }
+    .logo{
+ 	  width:44px;   /* was 38px */
+	  height:44px;  /* was 38px */
+	  border-radius:14px; /* slightly increased to match size */
+      background: linear-gradient(135deg, rgba(255,59,59,.95), rgba(53,208,186,.85));
+	  box-shadow: 0 12px 28px color-mix(in oklab, #000 22%, transparent);
+	  position:relative;
+	  overflow:hidden;
+    }
+    html[data-theme="light"] .logo{
+      background: linear-gradient(135deg, rgba(255,59,59,.95), rgba(14,165,164,.85));
+      box-shadow: 0 12px 28px rgba(11,18,32,.14);
+    }
+    .logo:after{
+      content:"";
+      position:absolute; inset:-20px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 45%);
+      transform: rotate(15deg);
+    }
+    .brand-text{display:flex; flex-direction:column}
+    .brand-name{font-weight:800; letter-spacing:.2px; font-size:27.5px}
+    .brand-tag{font-size:12px; color:var(--muted)}
+    .nav-links{display:flex; gap:14px; align-items:center; flex-wrap:wrap}
+    .nav-links a{
+      text-decoration:none; color:var(--muted); font-size:13px;
+      padding:8px 10px; border-radius:10px;
+    }
+    .nav-links a:hover{color:var(--text); background:color-mix(in oklab, var(--text) 6%, transparent)}
+    @media (max-width:960px){ .nav-links{display:none} }
+
+    .cta-row{display:flex; gap:10px; align-items:center}
+    .btn{
+      border:1px solid var(--line);
+      background:var(--btn-bg);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:12px;
+      font-weight:700;
+      font-size:13px;
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:8px;
+      cursor:pointer;
+      transition:transform .08s ease, background .2s ease, border-color .2s ease;
+      user-select:none;
+      white-space:nowrap;
+      box-shadow:0 10px 24px color-mix(in oklab, #000 10%, transparent);
+    }
+    html[data-theme="dark"] .btn{box-shadow:none}
+    .btn:hover{background:var(--btn-hover)}
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{
+      background:linear-gradient(135deg, rgba(255,59,59,.95), rgba(255,59,59,.75));
+      border-color:rgba(255,59,59,.45);
+      box-shadow:0 14px 36px rgba(255,59,59,.18);
+      color:#fff;
+    }
+    .btn-primary:hover{background:linear-gradient(135deg, rgba(255,59,59,1), rgba(255,59,59,.82))}
+    .btn-secondary{border-color:color-mix(in oklab, var(--accent2) 35%, transparent)}
+
+    .toggle{
+      width:42px; height:42px; border-radius:14px;
+      border:1px solid var(--line); background:var(--btn-bg);
+      display:inline-flex; align-items:center; justify-content:center;
+      cursor:pointer; transition:transform .08s ease, background .2s ease;
+    }
+    .toggle:hover{background:var(--btn-hover)}
+    .toggle:active{transform:translateY(1px)}
+    .toggle svg{width:18px; height:18px}
+    .sr-only{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0); border:0;
+    }
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border:1px solid var(--line);
+      border-radius:999px; background:var(--pill-bg);
+      color:var(--muted); font-size:12.5px;
+    }
+
+    .hero{padding:46px 0 18px}
+    .hero-grid{
+      display:grid; grid-template-columns:1.2fr .8fr; gap:22px; align-items:stretch;
+    }
+    @media (max-width:960px){ .hero-grid{grid-template-columns:1fr} }
+
+    .hero-card, .quote-card, .card, .step, details{
+      background:var(--hero-bg);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+    }
+
+    .hero-card{
+      padding:26px; box-shadow:var(--shadow);
+      overflow:hidden; position:relative;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(450px 250px at 10% 10%, color-mix(in oklab, var(--accent2) 16%, transparent), transparent 60%),
+        radial-gradient(450px 250px at 90% 20%, color-mix(in oklab, var(--accent) 14%, transparent), transparent 60%);
+      pointer-events:none; z-index:0;
+    }
+    .hero-card > *{position:relative; z-index:1}
+
+    h1{
+      margin:14px 0 10px;
+      font-size:44px; line-height:1.05; letter-spacing:-.6px;
+    }
+    @media (max-width:520px){ h1{font-size:34px} }
+    .subhead{
+      margin:0 0 18px; color:var(--muted); font-size:16.5px; max-width:58ch;
+    }
+
+    .hero-bullets{
+      display:grid; grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:10px 12px; margin:14px 0 18px; padding:0; list-style:none;
+    }
+    @media (max-width:520px){ .hero-bullets{grid-template-columns:1fr} }
+    .hero-bullets li{
+      display:flex; gap:10px; align-items:flex-start;
+      color:var(--muted); background:var(--hero-bullet-bg);
+      border:1px solid var(--line); border-radius:14px; padding:10px 12px;
+    }
+    .check{
+      width:18px; height:18px; border-radius:6px;
+      background:color-mix(in oklab, var(--accent2) 18%, transparent);
+      border:1px solid color-mix(in oklab, var(--accent2) 35%, transparent);
+      display:inline-flex; align-items:center; justify-content:center;
+      flex:0 0 auto; margin-top:1px;
+    }
+    .check svg{width:12px; height:12px; fill:var(--accent2)}
+    .hero-actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:8px}
+    .micro{margin-top:12px; color:var(--muted); font-size:12.5px}
+
+    .quote-card{
+      padding:18px; box-shadow:var(--shadow); position:relative; overflow:hidden;
+    }
+    .quote-card:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:radial-gradient(520px 260px at 50% -10%, color-mix(in oklab, var(--text) 8%, transparent), transparent 55%);
+      pointer-events:none;
+    }
+    .quote-card > *{position:relative; z-index:1}
+    .quote-title{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; margin-bottom:10px;
+    }
+    .quote-title h3{margin:0; font-size:16px; letter-spacing:.2px}
+    .badge{
+      font-size:12px; color:var(--muted); border:1px solid var(--line);
+      padding:6px 10px; border-radius:999px;
+      background:color-mix(in oklab, var(--text) 5%, transparent);
+    }
+
+    form{margin-top:10px}
+    .grid{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    @media (max-width:520px){ .grid{grid-template-columns:1fr} }
+    label{display:block; font-size:12px; color:var(--muted); margin:0 0 6px}
+    input, select, textarea{
+      width:100%; padding:12px 12px; border-radius:12px;
+      border:1px solid var(--line); background:var(--input-bg);
+      color:var(--text); outline:none;
+    }
+    textarea{min-height:92px; resize:vertical}
+    .form-row{margin-bottom:10px}
+    .form-actions{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:10px}
+    .fineprint{color:var(--muted); font-size:12px; margin-top:10px}
+
+    section{padding:36px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:14px; margin-bottom:16px;
+    }
+    .section-title h2{margin:0; font-size:26px; letter-spacing:-.3px}
+    .section-title p{margin:0; color:var(--muted); max-width:65ch; font-size:14px}
+
+    .cards{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px}
+    @media (max-width:960px){ .cards{grid-template-columns:1fr} }
+    .card{
+      padding:16px; box-shadow:0 10px 26px color-mix(in oklab, #000 10%, transparent);
+    }
+    html[data-theme="dark"] .card{box-shadow:0 10px 26px rgba(0,0,0,.22)}
+    .card h3{margin:0 0 8px; font-size:15.5px}
+    .card p{margin:0; color:var(--muted); font-size:13.5px}
+
+    .icon{
+      width:34px; height:34px; border-radius:12px;
+      border:1px solid var(--line);
+      background:color-mix(in oklab, var(--text) 5%, transparent);
+      display:flex; align-items:center; justify-content:center;
+      margin-bottom:10px;
+    }
+    .icon svg{width:18px; height:18px; fill:color-mix(in oklab, var(--text) 85%, transparent)}
+
+    .steps{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px}
+    @media (max-width:960px){ .steps{grid-template-columns:1fr} }
+    .step{
+      padding:16px; box-shadow:0 10px 26px color-mix(in oklab, #000 8%, transparent);
+    }
+    .step-num{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:30px; height:30px; border-radius:10px;
+      background:color-mix(in oklab, var(--accent) 16%, transparent);
+      border:1px solid color-mix(in oklab, var(--accent) 35%, transparent);
+      color:var(--text); font-weight:800; margin-bottom:10px;
+    }
+    .step h3{margin:0 0 6px; font-size:15.5px}
+    .step p{margin:0; color:var(--muted); font-size:13.5px}
+
+    .split{display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:stretch}
+    @media (max-width:960px){ .split{grid-template-columns:1fr} }
+
+    .list{margin:0; padding-left:18px; color:var(--muted); font-size:13.5px}
+    .list li{margin:8px 0}
+
+    .faq{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    @media (max-width:960px){ .faq{grid-template-columns:1fr} }
+    details{
+      padding:14px; box-shadow:0 10px 26px color-mix(in oklab, #000 6%, transparent);
+    }
+    summary{cursor:pointer; font-weight:800; list-style:none}
+    summary::-webkit-details-marker{display:none}
+    details p{margin:10px 0 0; color:var(--muted); font-size:13.5px}
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:24px 0 36px;
+      color:var(--muted); font-size:12.5px; background:var(--footer-bg);
+    }
+    .footer-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:14px; align-items:start}
+    @media (max-width:960px){ .footer-grid{grid-template-columns:1fr} }
+    .footer a{color:color-mix(in oklab, var(--text) 92%, transparent); text-decoration:none}
+    .footer a:hover{text-decoration:underline}
+    .mini{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+    .mini .pill{font-size:12px}
+
+    /* DELIVERY ESTIMATOR */
+    .delivery-estimator-section{padding:12px 0 36px}
+    .delivery-estimator-card{
+      background:var(--hero-bg);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .delivery-estimator-card:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(450px 220px at 10% 10%, color-mix(in oklab, var(--accent2) 12%, transparent), transparent 60%),
+        radial-gradient(450px 220px at 90% 20%, color-mix(in oklab, var(--accent) 10%, transparent), transparent 60%);
+      pointer-events:none;
+    }
+    .delivery-estimator-card > *{position:relative; z-index:1}
+    .delivery-estimator-kicker{
+      margin:0 0 8px; font-size:12px; font-weight:700; letter-spacing:.08em;
+      text-transform:uppercase; color:var(--muted);
+    }
+    .delivery-estimator-header h2{
+      margin:0 0 10px; font-size:30px;
+    }
+    .delivery-estimator-subtext{
+      margin:0 0 20px; color:var(--muted);
+    }
+    .delivery-estimator-grid{
+      display:grid; grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:16px; margin-bottom:20px;
+    }
+    @media (max-width:768px){ .delivery-estimator-grid{grid-template-columns:1fr} }
+    .delivery-estimator-field label{
+      display:block; margin-bottom:8px; font-weight:600; font-size:13px; color:var(--muted);
+    }
+    .delivery-estimator-checkbox-wrap{
+      display:flex; align-items:end;
+    }
+    .delivery-estimator-checkbox{
+      display:flex; align-items:center; gap:10px; font-weight:600; min-height:48px;
+    }
+    .delivery-estimator-actions{
+      display:flex; gap:12px; flex-wrap:wrap; margin-bottom:20px;
+    }
+    .estimator-btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 18px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:var(--accent); color:#fff; text-decoration:none;
+      font-weight:700; cursor:pointer;
+    }
+    .estimator-btn:hover{opacity:.92}
+    .estimator-btn-secondary{
+      background:color-mix(in oklab, var(--text) 8%, transparent);
+      color:var(--text);
+    }
+    .delivery-estimator-result{
+      padding:18px; border-radius:18px;
+      background:color-mix(in oklab, var(--text) 5%, transparent);
+      border:1px solid var(--line);
+    }
+    .delivery-estimator-result-label{
+      margin:0 0 8px; font-size:13px; text-transform:uppercase;
+      letter-spacing:.06em; color:var(--muted);
+    }
+    #deliveryEstimatorPrice{
+      margin:0 0 8px; font-size:40px; line-height:1;
+    }
+    .delivery-estimator-breakdown{
+      margin:0; color:var(--muted);
+    }
+    .delivery-estimator-final-cta{margin-top:18px}
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a class="brand" href="#top">
+          <div class="logo" aria-hidden="true"></div>
+          <div class="brand-text">
+            <div class="brand-name" id="brandName">CSPD Courier Pros</div>
+            <div class="brand-tag" id="brandTag">Same-day • Scheduled routes • Proof of delivery</div>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#services">Services</a>
+          <a href="#estimator">Estimator</a>
+          <a href="#how">How it works</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <div class="cta-row">
+          <button class="toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+            <span class="sr-only">Toggle theme</span>
+            <svg id="themeIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true"></svg>
+          </button>
+
+          <a class="btn btn-secondary" id="btnTextTop" href="#">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path fill="currentColor" d="M20 2H4a2 2 0 0 0-2 2v14l4-3h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Z"/></svg>
+            Text for Quote
+          </a>
+
+          <a class="btn btn-primary" id="btnCallTop" href="#">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path fill="currentColor" d="M6.6 10.8a15.3 15.3 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.6.6 3.9.6.6 0 1 .4 1 1V21c0 .6-.4 1-1 1C10.5 22 2 13.5 2 3c0-.6.4-1 1-1h3.9c.6 0 1 .4 1 1 0 1.3.2 2.7.6 3.9.1.4 0 .8-.3 1.1l-2.2 2.2Z"/></svg>
+            Call Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <span class="pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm1 11h-4V7h2v4h2v2Z"/></svg>
+            Fast local courier dispatch (same-day available)
+          </span>
+
+          <h1 id="heroHeadline">Fast, Reliable Courier Delivery — Same-Day & Scheduled Routes</h1>
+          <p class="subhead" id="heroSubheadline">
+            Local pickup & delivery for businesses and individuals. Clear ETAs, real communication, and proof of delivery when you need it.
+          </p>
+
+          <ul class="hero-bullets">
+            <li><span class="check"><svg viewBox="0 0 24 24"><path d="M9.2 16.6 4.8 12.2l1.4-1.4 3 3 8.6-8.6 1.4 1.4-10 10Z"/></svg></span>Same-day delivery (as available)</li>
+            <li><span class="check"><svg viewBox="0 0 24 24"><path d="M9.2 16.6 4.8 12.2l1.4-1.4 3 3 8.6-8.6 1.4 1.4-10 10Z"/></svg></span>Scheduled routes (daily/weekly)</li>
+            <li><span class="check"><svg viewBox="0 0 24 24"><path d="M9.2 16.6 4.8 12.2l1.4-1.4 3 3 8.6-8.6 1.4 1.4-10 10Z"/></svg></span>Proof of delivery (photo/signature)</li>
+            <li><span class="check"><svg viewBox="0 0 24 24"><path d="M9.2 16.6 4.8 12.2l1.4-1.4 3 3 8.6-8.6 1.4 1.4-10 10Z"/></svg></span>Business invoicing available</li>
+          </ul>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#quote">Get a Quote</a>
+            <a class="btn" id="btnCallHero" href="#">Call Dispatch</a>
+            <a class="btn btn-secondary" id="btnTextHero" href="#">Text Quote</a>
+          </div>
+
+          <div class="micro">
+            <strong>Company Info:</strong> CSPD Courier Pros, 909-345-6575, SW San Bernardino, SE Los Angeles, W Riverside & N Orange counties (Call for <code>SPECIAL REQUESTS</code>).<br>
+			Includes a built-in <strong>Delivery Price Estimator</strong> to help customers request quotes faster.
+          </div>
+        </div>
+
+        <aside class="quote-card" id="quote">
+          <div class="quote-title">
+            <h3>Request a Fast Quote</h3>
+            <span class="badge">Response: ASAP</span>
+          </div>
+
+          <form id="quoteForm">
+            <div class="grid">
+              <div class="form-row">
+                <label for="name">Name</label>
+                <input id="name" name="name" placeholder="Your name" autocomplete="name" />
+              </div>
+              <div class="form-row">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" placeholder="Your phone number" autocomplete="tel" />
+              </div>
+            </div>
+
+            <div class="grid">
+              <div class="form-row">
+                <label for="pickupZip">Pickup ZIP</label>
+                <input id="pickupZip" name="pickupZip" placeholder="e.g., 91709" inputmode="numeric" />
+              </div>
+              <div class="form-row">
+                <label for="dropZip">Drop-off ZIP</label>
+                <input id="dropZip" name="dropZip" placeholder="e.g., 90017" inputmode="numeric" />
+              </div>
+            </div>
+
+            <div class="grid">
+              <div class="form-row">
+                <label for="when">When</label>
+                <select id="when" name="when">
+                  <option>ASAP (Same-day)</option>
+                  <option>Today (Scheduled window)</option>
+                  <option>Tomorrow</option>
+                  <option>This week (Recurring route)</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <label for="item">Item Type</label>
+                <select id="item" name="item">
+                  <option>Documents</option>
+                  <option>Small package</option>
+                  <option>Auto parts</option>
+                  <option>Medical / lab supplies</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="notes">Notes</label>
+              <textarea id="notes" name="notes" placeholder="Size/weight, pickup instructions, deadline, etc."></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Text Quote Request</button>
+              <a class="btn" id="btnEmail" href="#">Email Instead</a>
+            </div>
+
+            <div class="fineprint">
+              By submitting, you agree to be contacted about your delivery request. We do not share your info.
+            </div>
+          </form>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- DELIVERY PRICE ESTIMATOR -->
+  <section class="delivery-estimator-section" id="estimator">
+    <div class="wrap">
+      <div class="delivery-estimator-card">
+        <div class="delivery-estimator-header">
+          <p class="delivery-estimator-kicker">Quick Pricing Tool</p>
+          <h2>Delivery Price Estimator</h2>
+          <p class="delivery-estimator-subtext">
+            Get a quick estimate based on distance and service type.
+          </p>
+        </div>
+
+        <div class="delivery-estimator-grid">
+          <div class="delivery-estimator-field">
+            <label for="estDistance">Distance (miles)</label>
+            <input type="number" id="estDistance" min="1" step="1" placeholder="Enter miles" />
+          </div>
+
+          <div class="delivery-estimator-field">
+            <label for="estService">Service Type</label>
+            <select id="estService">
+              <option value="1">Standard</option>
+              <option value="1.5">Priority</option>
+              <option value="2">Rush</option>
+            </select>
+          </div>
+
+          <div class="delivery-estimator-field">
+            <label for="estWeight">Package Size</label>
+            <select id="estWeight">
+              <option value="0">Documents / Small</option>
+              <option value="8">Medium Package</option>
+              <option value="15">Large Package</option>
+            </select>
+          </div>
+
+          <div class="delivery-estimator-field delivery-estimator-checkbox-wrap">
+            <label class="delivery-estimator-checkbox">
+              <input type="checkbox" id="estReturnTrip" />
+              <span>Include return trip</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="delivery-estimator-actions">
+          <button type="button" class="estimator-btn" onclick="calculateDeliveryEstimate()">
+            Calculate Estimate
+          </button>
+          <button type="button" class="estimator-btn estimator-btn-secondary" onclick="resetDeliveryEstimate()">
+            Reset
+          </button>
+        </div>
+
+        <div class="delivery-estimator-result" id="deliveryEstimatorResult">
+          <p class="delivery-estimator-result-label">Estimated Delivery Cost</p>
+          <h3 id="deliveryEstimatorPrice">$0.00</h3>
+          <p id="deliveryEstimatorBreakdown" class="delivery-estimator-breakdown">
+            Enter your details above and click calculate.
+          </p>
+        </div>
+
+        <div class="delivery-estimator-final-cta">
+          <a id="deliveryEstimatorQuoteBtn" href="#" class="estimator-btn">
+            Request Final Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service area -->
+  <section id="area">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>Service Area</h2>
+          <p>Serving: <strong>SW San Bernardino, SE Los Angeles, W Riverside & N Orange counties</strong> (Call for <code>SPECIAL REQUESTS</code>). <!-- (UPDATE_ME). Add a list of cities later for local SEO.--> </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Common Coverage <!-- (placeholder)--></h3>
+        <!--<p>Example: Downtown • Westside • Valley • Inland areas • Nearby counties (UPDATE_ME)</p>-->
+		<p>Southwest San Bernardino county, Southeast Los Angeles county, West Riverside county and North Orange county</p>
+        <div class="mini">
+          <span class="pill">Same-day routes</span>
+          <span class="pill">Scheduled stops</span>
+          <span class="pill">Pickup windows</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="services">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>Courier Services</h2>
+          <p>Speed | Consistency | Communication — One-time Rush or Recurring Route</p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3v13h2a3 3 0 0 0 6 0h6a3 3 0 0 0 6 0h1v-5l-4-4Zm-5 0H5V6h10v2Zm-7 12a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm12 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm2-5h-.8a3 3 0 0 0-5.4 0H11a3 3 0 0 0-5.4 0H5V10h13.2L22 12.8V15Z"/></svg></div>
+          <h3>Same-Day Delivery</h3>
+          <p>Local pickup and fast delivery with clear ETAs and real communication.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M7 2h10v2H7V2Zm11 4H6a2 2 0 0 0-2 2v12h16V8a2 2 0 0 0-2-2Zm0 14H6V8h12v12Zm-9-9h6v2H9v-2Zm0 4h6v2H9v-2Z"/></svg></div>
+          <h3>Documents & Small Packages</h3>
+          <p>Secure handling. Proof of delivery (photo/signature) available on request.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5Zm0 8L2 5v14l10 5 10-5V5l-10 5Zm0 10.3-6-3V9.7l6 3v7.6Z"/></svg></div>
+          <h3>Business Routes</h3>
+          <p>Daily/weekly scheduled runs for parts, supplies, interoffice transfers, and more.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>How It Works</h2>
+          <p>Simple process — request, pickup, delivery + confirmation.</p>
+        </div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Request a pickup</h3>
+          <p>Call, text, use the estimator, or submit the quote form. We confirm availability and ETA.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Fast pickup</h3>
+          <p>Driver dispatches to the pickup location and keeps you updated.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Delivered + proof</h3>
+          <p>Delivery confirmation with signature and/or photo when requested.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>Pricing (Simple + Transparent)</h2>
+          <p>Rates depend on distance, urgency, wait time, and package size. Use the estimator above for a quick ballpark quote.</p>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="card">
+          <h3>Typical starting points</h3>
+          <ul class="list">
+            <li><strong id="pricingLine1">Local delivery:</strong> ($2/mile over 5 miles | 0–20 lbs max)</li>
+            <li><strong id="pricingLine2">Priority same-day:</strong> ($2.50/mile over 5 miles)</li>
+            <li><strong id="pricingLine3">Scheduled routes:</strong> $199–$299/wk (1 stop) | $349–$499/wk (3-5 stops)</li>
+            <li><strong>Proof of delivery:</strong> Photo included | Signature/timestamp documentation $5</li>
+          </ul>
+          <div class="mini">
+            <span class="pill">Invoice options</span>
+            <span class="pill">Recurring routes</span>
+            <span class="pill">Business accounts</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Best way to price: quick quote</h3>
+          <p>Send pickup/drop ZIPs and your deadline. We’ll confirm ETA and cost.</p>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn btn-primary" href="#quote">Get a Quote</a>
+            <a class="btn btn-secondary" id="btnTextPricing" href="#">Text Quote</a>
+          </div>
+          <div class="fineprint">Tip: scheduled routes usually cost less per stop than one-off rush deliveries.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>FAQ</h2>
+          <p>Quick answers to common questions.</p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>How fast can you pick up?</summary>
+          <p>Typically within 15–60 minutes depending on location and demand.</p>
+        </details>
+        <details>
+          <summary>Do you provide proof of delivery?</summary>
+          <p>Yes — signature and/or photo available on request.</p>
+        </details>
+        <details>
+          <summary>What can’t you deliver?</summary>
+          <p>Hazardous materials, illegal items, and anything unsafe to transport.</p>
+        </details>
+        <details>
+          <summary>Do you offer business accounts?</summary>
+          <p>Yes — scheduled routes and invoicing options are available.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="hero-card" style="padding:22px;">
+        <div class="section-title" style="margin-bottom:10px;">
+          <div>
+            <h2 style="margin:0;">Need something delivered today?</h2>
+            <p style="margin-top:8px;">Call now | Use estimator | Text for quote — we’ll confirm availability ASAP.</p>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" id="btnCallBottom" href="#">Call Now</a>
+          <a class="btn btn-secondary" id="btnTextBottom" href="#">Text for Quote</a>
+          <a class="btn" href="#quote">Use Quote Form</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div style="font-weight:800; color:color-mix(in oklab, var(--text) 92%, transparent);" id="footerName">CSPD Courier Pros</div>
+          <div style="margin-top:6px;" id="footerTag">Same-day delivery • Scheduled routes • Proof of delivery</div>
+          <div class="mini">
+            <span class="pill"><strong>Hours: </strong>M-F (6a-6p) Wknd (9a-5p) </span>
+            <span class="pill"><strong>Service Area: </strong><a href="#area">Tap/Click here</a></span>
+          </div>
+        </div>
+        <div>
+          <div style="font-weight:800; color:color-mix(in oklab, var(--text) 92%, transparent);">Contact</div>
+          <div style="margin-top:8px;">
+            Phone: <a id="phoneLinkFooter" href="#">909-345-6575</a><br/>
+            Text: <a id="textLinkFooter" href="#">(626) 210-0475</a><br/>
+            Email: <a id="emailFooter" href="#">dispatch@yourcourier.com</a>
+          </div>
+          <div style="margin-top:10px;">© <span id="year"></span> <span id="footerName2">CSPD Courier Pros</span>. All rights reserved.</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const CONFIG = {
+      businessName: "CSPD Courier Pros",
+      tagline: "Same-day • Scheduled routes • Proof of delivery",
+      headline: "Fast, Reliable Courier Delivery — Same-Day & Scheduled Routes",
+      subheadline: "Local pickup & delivery for businesses and individuals. Clear ETAs, real communication, and proof of delivery when you need it.",
+      phoneE164: "+16262100475",
+      phoneDisplay: "(626) 210-0475",
+      email: "ericbrooks@cspdcourierpros.com",    // UPDATE_ME	("dispatch@yourcourier.com",)
+      serviceArea: "Los Angeles • Orange County • Inland Empire",
+      hours: "Mon–Sat 8AM - 6PM",
+      pricingLine1: "Local delivery: Starting at $25",
+      pricingLine2: "Priority same-day: Starting at $45",
+      pricingLine3: "Scheduled routes: Weekly flat-rate options available",
+      defaultTheme: "light",
+      defaultSmsBody: "Hi I need a courier quote. Pickup ZIP:  Drop-off ZIP:  When:  Item: "
+    };
+
+    const THEME_KEY = "courier_estimator_theme";
+    const themeIcon = document.getElementById("themeIcon");
+    const icons = {
+      sun: `<path fill="currentColor" d="M6.76 4.84 5.34 3.42 3.93 4.83l1.42 1.42 1.41-1.41ZM12 4a1 1 0 0 1 1-1h0a1 1 0 0 1 1 1v1h-2V4Zm7.07.83-1.41-1.41-1.42 1.41 1.42 1.42 1.41-1.42ZM20 11h1a1 1 0 0 1 1 1h0a1 1 0 0 1-1 1h-1v-2ZM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-9 3H2a1 1 0 0 0-1 1h0a1 1 0 0 0 1 1h1v-2Zm3.34 9.17 1.42 1.41 1.41-1.41-1.41-1.42-1.42 1.42ZM13 19h-2v1a1 1 0 0 0 1 1h0a1 1 0 0 0 1-1v-1Zm6.24 1.16 1.41 1.42 1.42-1.41-1.42-1.42-1.41 1.41Z"/>`,
+      moon: `<path fill="currentColor" d="M21 14.6A7.6 7.6 0 0 1 9.4 3a.9.9 0 0 0-1.1 1.1A9.4 9.4 0 0 0 20.9 15.7a.9.9 0 0 0 1.1-1.1Z"/>`
+    };
+
+    function setTheme(theme){
+      document.documentElement.setAttribute("data-theme", theme);
+      document.querySelector('meta[name="theme-color"]')
+        ?.setAttribute("content", theme === "light" ? "#FFFFFF" : "#0B1220");
+      themeIcon.innerHTML = theme === "light" ? icons.moon : icons.sun;
+      localStorage.setItem(THEME_KEY, theme);
+    }
+
+    setTheme(localStorage.getItem(THEME_KEY) || CONFIG.defaultTheme);
+    document.getElementById("themeToggle").addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme") || "light";
+      setTheme(current === "light" ? "dark" : "light");
+    });
+
+    function buildSmsHref(body){
+      return `sms:${CONFIG.phoneE164}?&body=${encodeURIComponent(body)}`;
+    }
+
+    function applyConfig(){
+      document.title = `${CONFIG.businessName} | Same-Day Courier & Scheduled Routes`;
+
+      const telHref = "tel:+19093456575";
+      const smsHref = buildSmsHref(CONFIG.defaultSmsBody);
+      const mailHref = `mailto:${CONFIG.email}?subject=${encodeURIComponent("Courier Quote Request")}`;
+
+      const setText = (id, value) => { const el = document.getElementById(id); if(el) el.textContent = value; };
+      const setHref = (id, href) => { const el = document.getElementById(id); if(el) el.setAttribute("href", href); };
+
+      setText("brandName", CONFIG.businessName);
+      setText("brandTag", CONFIG.tagline);
+      setText("heroHeadline", CONFIG.headline);
+      setText("heroSubheadline", CONFIG.subheadline);
+      setText("footerName", CONFIG.businessName);
+      setText("footerName2", CONFIG.businessName);
+      setText("footerTag", CONFIG.tagline);
+      setText("hoursText", CONFIG.hours);
+      setText("serviceAreaText", CONFIG.serviceArea);
+      setText("pricingLine1", CONFIG.pricingLine1);
+      setText("pricingLine2", CONFIG.pricingLine2);
+      setText("pricingLine3", CONFIG.pricingLine3);
+
+      ["btnCallTop","btnCallHero","btnCallBottom","btnCallForm"].forEach(id => setHref(id, telHref));
+      ["btnTextTop","btnTextHero","btnTextPricing","btnTextBottom","textLinkFooter"].forEach(id => setHref(id, smsHref));
+      setHref("btnEmail", mailHref);
+
+      const phoneFooter = document.getElementById("phoneLinkFooter");
+      if(phoneFooter){
+        phoneFooter.textContent = "909-345-6575";
+        phoneFooter.href = telHref;
+      }
+      const textFooter = document.getElementById("textLinkFooter");
+      if(textFooter){
+        textFooter.textContent = CONFIG.phoneDisplay;
+        textFooter.href = smsHref;
+      }
+      const emailFooter = document.getElementById("emailFooter");
+      if(emailFooter){
+        emailFooter.textContent = CONFIG.email;
+        emailFooter.href = `mailto:${CONFIG.email}`;
+      }
+
+      document.getElementById("deliveryEstimatorQuoteBtn").href = buildSmsHref("Hi, I would like a final delivery quote.");
+      document.getElementById("year").textContent = new Date().getFullYear();
+    }
+
+    applyConfig();
+
+    document.getElementById("quoteForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const data = new FormData(e.target);
+      const msg =
+`COURIER QUOTE REQUEST
+Name: ${data.get("name") || ""}
+Phone: ${data.get("phone") || ""}
+Pickup ZIP: ${data.get("pickupZip") || ""}
+Drop ZIP: ${data.get("dropZip") || ""}
+When: ${data.get("when") || ""}
+Item: ${data.get("item") || ""}
+Notes: ${data.get("notes") || ""}`.trim();
+
+      window.location.href = buildSmsHref(msg);
+    });
+
+    document.getElementById("btnEmail").addEventListener("click", function(e){
+      e.preventDefault();
+      const form = document.getElementById("quoteForm");
+      const data = new FormData(form);
+      const body =
+`COURIER QUOTE REQUEST
+
+Name: ${data.get("name") || ""}
+Phone: ${data.get("phone") || ""}
+Pickup ZIP: ${data.get("pickupZip") || ""}
+Drop ZIP: ${data.get("dropZip") || ""}
+When: ${data.get("when") || ""}
+Item: ${data.get("item") || ""}
+Notes: ${data.get("notes") || ""}`.trim();
+
+      window.location.href = `mailto:${encodeURIComponent(CONFIG.email)}?subject=${encodeURIComponent("Courier Quote Request")}&body=${encodeURIComponent(body)}`;
+    });
+
+    function calculateDeliveryEstimate() {
+      const distance = parseFloat(document.getElementById("estDistance").value) || 0;
+      const serviceMultiplier = parseFloat(document.getElementById("estService").value) || 1;
+      const packageFee = parseFloat(document.getElementById("estWeight").value) || 0;
+      const returnTrip = document.getElementById("estReturnTrip").checked;
+
+      const resultPrice = document.getElementById("deliveryEstimatorPrice");
+      const resultBreakdown = document.getElementById("deliveryEstimatorBreakdown");
+      const quoteBtn = document.getElementById("deliveryEstimatorQuoteBtn");
+
+      if (distance <= 0) {
+        resultPrice.textContent = "$0.00";
+        resultBreakdown.textContent = "Please enter a valid distance in miles.";
+        return;
+      }
+
+      const baseFee = 12;
+      const perMileRate = 2.25;
+
+      let subtotal = baseFee + (distance * perMileRate) + packageFee;
+
+      if (returnTrip) {
+        subtotal += distance * 1.25;
+      }
+
+      const total = subtotal * serviceMultiplier;
+      const formattedTotal = `$${total.toFixed(2)}`;
+      resultPrice.textContent = formattedTotal;
+
+      const serviceText =
+        serviceMultiplier === 1 ? "Standard" :
+        serviceMultiplier === 1.5 ? "Priority" : "Rush";
+
+      const returnText = returnTrip ? "Yes" : "No";
+
+      resultBreakdown.textContent =
+        `Base fee $${baseFee.toFixed(2)} + ${distance} miles at $${perMileRate.toFixed(2)}/mile` +
+        `${packageFee > 0 ? ` + package fee $${packageFee.toFixed(2)}` : ""}` +
+        `${returnTrip ? ` + return trip charge` : ""}` +
+        `, then multiplied by ${serviceText.toLowerCase()} service. Return trip: ${returnText}.`;
+
+      const smsMessage =
+        `Hi, I would like a final delivery quote.\n` +
+        `Estimated price: ${formattedTotal}\n` +
+        `Distance: ${distance} miles\n` +
+        `Service: ${serviceText}\n` +
+        `Package fee: $${packageFee.toFixed(2)}\n` +
+        `Return trip: ${returnText}`;
+
+      quoteBtn.href = buildSmsHref(smsMessage);
+    }
+
+    function resetDeliveryEstimate() {
+      document.getElementById("estDistance").value = "";
+      document.getElementById("estService").value = "1";
+      document.getElementById("estWeight").value = "0";
+      document.getElementById("estReturnTrip").checked = false;
+      document.getElementById("deliveryEstimatorPrice").textContent = "$0.00";
+      document.getElementById("deliveryEstimatorBreakdown").textContent =
+        "Enter your details above and click calculate.";
+      document.getElementById("deliveryEstimatorQuoteBtn").href =
+        buildSmsHref("Hi, I would like a final delivery quote.");
+    }
+
+    window.calculateDeliveryEstimate = calculateDeliveryEstimate;
+    window.resetDeliveryEstimate = resetDeliveryEstimate;
+  </script>
+</body>
+</html>
